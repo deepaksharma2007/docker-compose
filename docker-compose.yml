@@ -1,0 +1,31 @@
+version: '3'
+services:
+        dbos:
+                image: mysql:5.7
+                volumes:
+                        - mysql_storage:/var/lib/mysql
+                restart: always
+                environment:
+                        MYSQL_ROOT_PASSWORD: redhat
+                        MYSQL_DATABASE: mydb
+                        MYSQL_USER: deepak
+                        MYSQL_PASSWORD: deepak1
+
+        wordpress_os:
+                image: wordpress:5.1.1-php7.3-apache
+                restart: always
+                depends_on:
+                        - dbos
+                ports:
+                         - 80:80
+                environment:
+                    WORDPRESS_DB_HOST: dbos
+                    WORDPRESS_DB_USER: deepak
+                    WORDPRESS_DB_PASSWORD: deepak1
+                    WORDPRESS_DB_NAME: mydb
+                volumes:
+                - wordpress_storage:/var/www/html
+
+volumes:
+   wordpress_storage:
+   mysql_storage:
