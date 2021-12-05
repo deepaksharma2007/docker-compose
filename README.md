@@ -1,6 +1,7 @@
 # 🔰 docker-compose project 🔰
 
 📌In this I create multi-tier application using Docker-compose. By just one click , we get entire infrastructure of multi-tier application.
+
 📌I create one container for wordpress app and one for mysql database . Also attach docker volume , So that data of both will be persistent. 
 
 ### Project-Description
